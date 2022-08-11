@@ -73,4 +73,8 @@ RUN chown -R www-data:www-data /var/www/html \
 
 EXPOSE 8000
 
+RUN composer install --optimize-autoloader --no-dev
+CMD php artisan serve --host=0.0.0.0 --port $PORT
+EXPOSE $PORT
+
 ENTRYPOINT ["start-container"]
